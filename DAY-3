@@ -1,1 +1,172 @@
+optional merge sort
+import java.util.*;
+public class Main
+{   public static void divide(int[]arr,int low,int high){
+    int mid=0;
+    if(low<high){
+        mid= (low+high)/2;
+    
+    divide(arr,low,mid);
+    divide(arr,mid+1,high);
+    conquer(arr,low,mid,high);
+    }
+}
+public static void display(int[] arr){
+    System.out.println(Arrays.toString(arr));
+}
+public static void conquer(int[] arr, int low, int mid, int high) {
+    int mergedLength = high - low + 1;
+    int[] merged = new int[mergedLength];
+    int index1 = low;
+    int index2 = mid + 1;
+    int mergedIndex = 0;
+    
+    while (index1 <= mid && index2 <= high) {
+        if (arr[index1] < arr[index2]) {
+            merged[mergedIndex++] = arr[index1++];
+        } else {
+            merged[mergedIndex++] = arr[index2++];
+        }
+    }
+    
+    while (index1 <= mid) {
+        merged[mergedIndex++] = arr[index1++];
+    }
+    
+    while (index2 <= high) {
+        merged[mergedIndex++] = arr[index2++];
+    }
+    
+    for (int i = 0; i < mergedLength; i++) {
+        arr[low + i] = merged[i];
+    }
+}
+
+public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] arr= new int[n];
+		for(int i=0;i<n;i++){
+		    arr[i]=sc.nextInt();
+		    }
+		    display(arr);
+		    divide(arr,0,n-1);
+		    display(arr);
+		    
+	}
+}
+
+
+
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j]==target){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+
+
+
+class Solution {
+    public double myPow(double x, int n) {
+        double fiianal=Math.pow(x,n);
+        return fiianal;
+    }
+}
+
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        if(nums.length==1){
+            return nums[0];
+        }
+        int n=nums.length;
+        int count=1;
+        int k=n/2;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(nums[i]==nums[j]){
+                    count++;
+                    if(count>k){
+                        return nums[i];
+                    }
+                }
+                 
+            }
+            
+                count=1;
+        }
+        return 0;
+    }
+}
+
+
+
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        if(nums.length==1){
+            return nums[0];
+        }
+        int n=nums.length;
+        int count=1;
+        int k=n/3;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(nums[i]==nums[j]){
+                    count++;
+                    if(count>k){
+                        return nums[i];
+                    }
+                }
+                 
+            }
+            
+                count=1;
+        }
+        return 0;
+    }
+}
+
+
+
+
+import java.math.BigInteger;
+
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int max = Math.max(m, n);
+        int min = Math.min(m, n);
+        max = max - 1;
+        min = min - 1;
+        int k = max + min;
+        BigInteger res = BigInteger.ONE;
+        BigInteger nu = BigInteger.ONE;
+        BigInteger du = BigInteger.ONE;
+
+        for (int i = 0; i < min; i++) {
+            nu = nu.multiply(BigInteger.valueOf(k - i));
+            du = du.multiply(BigInteger.valueOf(i + 1));
+        }
+
+        res = nu.divide(du);
+
+        return res.intValue();
+    }
+}
+
+
+
+reverse pairs...........
+
+
 
